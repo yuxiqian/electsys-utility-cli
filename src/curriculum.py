@@ -3,6 +3,17 @@
 # written by yuxq in 2018/9/15. all rights reserved.
 
 
+class Info:
+    class_name = ""
+    holding_school = ""
+    teacher_name = ""
+    teacher_title = ""
+    population = 0
+
+    def get_full_teacher_name(self):
+        return self.teacher_name + " " + self.teacher_title
+
+
 class Arrangement:
     # 单次上课的具体参数
     # 一门课可能会在一个学期内包含不同的课程教室组合
@@ -23,9 +34,9 @@ class Arrangement:
         print('\t', end='')
         print(self.week_day)
         print('\t', end='')
-        print(self.start_week)
+        print(self.start_lesson)
         print('\t', end='')
-        print(self.end_week)
+        print(self.end_lesson)
         print('\t', end='')
         print(self.start_lesson)
         print('\t', end='')
@@ -85,6 +96,19 @@ class Curriculum:
 
     student_number = 0
     # 上课人数
+
+    def related_rooms(self):
+        classrooms = []
+
+        for i in self.odd_week:
+            if not i.classroom in classrooms:
+                classrooms.append(i.classroom)
+
+        for i in self.even_week:
+            if not i.classroom in classrooms:
+                classrooms.append(i.classroom)
+
+        return classrooms
 
     def print_me(self):
         print(self.title_name)

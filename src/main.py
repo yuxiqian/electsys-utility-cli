@@ -62,6 +62,8 @@ week_day = int(input("""周几？
 >>> """))
 separator()
 
+courses = []
+
 for part in result['data']:
     i = Curriculum()
     i.identifier = part['identifier']
@@ -78,17 +80,67 @@ for part in result['data']:
 
     for comp in part['odd_week']:
         arr = Arrangement()
-        arr.week_day = comp['week_day'],
-        arr.start_lesson = comp['start_from'],
-        arr.end_lesson = comp['end_at'],
+        arr.week_day = comp['week_day']
+        arr.start_lesson = comp['start_from']
+        arr.end_lesson = comp['end_at']
         arr.classroom = comp['classroom']
         i.odd_week.append(arr)
 
     for comp in part['even_week']:
         arr = Arrangement()
-        arr.week_day = comp['week_day'],
-        arr.start_lesson = comp['start_from'],
-        arr.end_lesson = comp['end_at'],
+        arr.week_day = comp['week_day']
+        arr.start_lesson = comp['start_from']
+        arr.end_lesson = comp['end_at']
         arr.classroom = comp['classroom']
         i.even_week.append(arr)
+
     i.student_number = part['student_number']
+    courses.append(i)
+
+detail_info = [Info()] * 14
+
+for cur in courses:
+    if not full_name in cur.related_rooms():
+        continue
+    if cur.start_week > week:
+        continue
+    if cur.end_week < week:
+        continue
+    # cur.print_me()
+    if week % 2 == 1:
+        # 单周
+        for arr in cur.odd_week:
+            if arr.week_day != week_day:
+                continue
+            for lesson_idx in range(arr.start_lesson, arr.end_lesson + 1):
+                info = Info()
+                info.class_name = cur.title_name
+                info.teacher_name = cur.teacher_name
+                info.teacher_title = cur.teacher_title
+                info.holding_school = cur.holder_school
+                info.population = cur.student_number
+                detail_info[lesson_idx - 1] = info
+    else:
+        # 霜周
+        for arr in cur.even_week:
+            if arr.week_day != week_day:
+                continue
+            for lesson_idx in range(arr.start_lesson, arr.end_lesson + 1):
+                info = Info()
+                info.class_name = cur.title_name
+                info.teacher_name = cur.teacher_name
+                info.teacher_title = cur.teacher_title
+                info.holding_school = cur.holder_school
+                info.population = cur.student_number
+                detail_info[lesson_idx - 1] = info
+
+
+table = PrettyTable(["节数", "课名", "教师", "开课院系", "学生人数"])
+for i in range(13):
+    if detail_info[i].class_name != "":
+        table.add_row([i + 1, detail_info[i].class_name, detail_info[i].get_full_teacher_name(),
+                       detail_info[i].holding_school, detail_info[i].population])
+    else:
+        table.add_row([i + 1, "", "", "", ""])
+
+print(table)
