@@ -2,9 +2,6 @@
 #
 # written by yuxq in 2018/9/15. all rights reserved.
 
-import re
-from utils import *
-from copy import deepcopy
 
 class Arrangement:
     # 单次上课的具体参数
@@ -21,6 +18,21 @@ class Arrangement:
 
     classroom = ''
     # 授课教室
+
+    def print_me(self):
+        print('\t', end='')
+        print(self.week_day)
+        print('\t', end='')
+        print(self.start_week)
+        print('\t', end='')
+        print(self.end_week)
+        print('\t', end='')
+        print(self.start_lesson)
+        print('\t', end='')
+        print(self.end_lesson)
+        print('\t', end='')
+        print(self.classroom)
+        print()
 
 
 class Curriculum:
@@ -73,3 +85,22 @@ class Curriculum:
 
     student_number = 0
     # 上课人数
+
+    def print_me(self):
+        print(self.title_name)
+        print(self.teacher_name)
+        print(self.teacher_title)
+        print(self.holder_school)
+        print(self.identifier)
+        print(self.learn_hour)
+        print(self.credit_score)
+        for i in self.odd_week:
+            i.print_me()
+        for i in self.even_week:
+            i.print_me()
+        print(self.notes)
+        print(self.target_grade)
+        print(self.school_year)
+        print(self.term)
+        print(self.student_number)
+        print()
