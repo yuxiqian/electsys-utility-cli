@@ -8,7 +8,7 @@ Electsys Utility 课程查询的命令行版本。
 
 * 无需 jAccount 登录。
 
-* 数据来自 [finda-studyroom](https://github.com/yuxiqian/finda-studyroom) 获取数据。
+* 数据来自 [finda-studyroom](https://github.com/yuxiqian/finda-studyroom)。
 
 # 屏幕截图
 
