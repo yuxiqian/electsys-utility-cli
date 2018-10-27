@@ -136,7 +136,6 @@ while True:
                     info.population = cur.student_number
                     detail_info[lesson_idx - 1] = info
 
-
     table = PrettyTable(["节数", "课名", "教师", "开课院系", "学生人数"])
     for i in range(13):
         if detail_info[i].class_name != "":
@@ -145,6 +144,7 @@ while True:
         else:
             table.add_row([i + 1, "", "", "", ""])
 
+    print("%d - %d 学年%s\t%s %s\t第 %d 周%s\t教室安排" %
+          (start_year, start_year + 1, term_list[term], building_list[building], room, week, week_list[week_day]))
     print(table)
     separator()
-
