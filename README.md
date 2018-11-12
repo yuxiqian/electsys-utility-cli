@@ -2,6 +2,8 @@
 
 Electsys Utility 课程查询的命令行版本。
 
+![](https://travis-ci.org/yuxiqian/electsys-utility-cli.svg?branch=master)
+
 # 功能
 
 * 查看上海交通大学六栋主要教学楼每学年每周每天的教室占用情况。
