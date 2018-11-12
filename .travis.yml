@@ -10,3 +10,6 @@ python:
 # command to install dependencies
 install:
   - pip install PrettyTable requests
+
+script:
+  - python src/main.py < Test

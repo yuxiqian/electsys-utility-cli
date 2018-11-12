@@ -14,7 +14,7 @@ json_link_header = "https://raw.githubusercontent.com/yuxiqian/finda-studyroom/m
 start_year = int(input("输入学年的起始年份。\n例如，输入 [2018] 代表 2018-2019 学年\n>>> "))
 separator()
 
-term = int(input("输入学期代码。\n[1] 代表秋季学期\t[2] 代表春季学期\t[3] 代表夏季小学期\n>>> "))
+term = int(input("输入学期代码。\n[1] 代表秋季学期\t[2] 代表春季学期\t[3] 代表夏季小学期。\n>>> "))
 separator()
 
 json_url = json_link_header + \
@@ -45,6 +45,10 @@ while True:
     [4] 代表东上院\t[5] 代表东中院\t[6] 代表东下院
     >>> """))
     separator()
+
+    if building < 1 or building > 6:
+        print("结束。")
+        break
 
     room = input("""输入教学楼门牌号。
     东中院楼栋号和门牌号使用半角 “-” 符号分割。
