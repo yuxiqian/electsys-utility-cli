@@ -1,5 +1,11 @@
 # electsys-utility-cli
 
+⚠️ 由于本科教学信息服务网接口升级，此脚本已停止更新。
+
+更新的 API 发布在 这里 ([electsys-api](https://github.com/yuetsin/electsys-api/))。
+
+---
+
 Electsys Utility 课程查询的命令行版本。
 
 ![](https://travis-ci.org/yuxiqian/electsys-utility-cli.svg?branch=master)
@@ -23,4 +29,3 @@ Electsys Utility 课程查询的命令行版本。
 * [requests](https://github.com/requests/requests)
 
 * [PrettyTable](https://github.com/dprince/python-prettytable)
-
